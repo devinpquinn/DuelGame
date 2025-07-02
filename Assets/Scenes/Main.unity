@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 435294033}
-  blendSpeed: 2
+  blendSpeed: 5
 --- !u!1 &906599880
 GameObject:
   m_ObjectHideFlags: 0
