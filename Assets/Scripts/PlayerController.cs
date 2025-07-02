@@ -22,6 +22,6 @@ public class PlayerController : MonoBehaviour
         }
         // If both keys are pressed or neither is pressed, blendValue remains unchanged
 
-        animator.SetFloat("Stance", blendValue);
+        animator.SetFloat("Stance_Shield", blendValue);
     }
 }

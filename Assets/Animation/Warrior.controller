@@ -7,7 +7,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stance
+  m_Name: Stance_Shield
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 612222117654583151}
@@ -31,7 +31,7 @@ AnimatorController:
   m_Name: Warrior
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Stance
+  - m_Name: Stance_Shield
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -39,7 +39,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
-    m_Name: Stance
+    m_Name: Stance_Shield
     m_StateMachine: {fileID: -6706001736728466693}
     m_Mask: {fileID: 0}
     m_Motions: []
@@ -100,7 +100,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Stance
+  m_BlendParameter: Stance_Shield
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
