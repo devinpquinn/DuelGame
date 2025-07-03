@@ -6,38 +6,34 @@ public class PlayerController : MonoBehaviour
     public float blendSpeed = 2f; // How fast to blend
     private float shieldBlendValue = 0f;
     private float swordBlendValue = 0f;
+    private float shieldTarget = 0f;
+    private float swordTarget = 0f;
 
     void Update()
     {
-        // Handle W/S keys for Stance_Shield
-        bool wPressed = Input.GetKey(KeyCode.W);
-        bool sPressed = Input.GetKey(KeyCode.S);
+        // Handle W/S keys for Stance_Shield (toggle behavior)
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            shieldTarget = 1f;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            shieldTarget = 0f;
+        }
 
-        // Only blend if exactly one key is pressed (horizontal axis behavior)
-        if (wPressed && !sPressed)
+        // Handle up/down arrow keys for Stance_Sword (toggle behavior)
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            shieldBlendValue = Mathf.MoveTowards(shieldBlendValue, 1f, blendSpeed * Time.deltaTime);
+            swordTarget = 1f;
         }
-        else if (sPressed && !wPressed)
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            shieldBlendValue = Mathf.MoveTowards(shieldBlendValue, 0f, blendSpeed * Time.deltaTime);
+            swordTarget = 0f;
         }
-        // If both keys are pressed or neither is pressed, shieldBlendValue remains unchanged
 
-        // Handle up/down arrow keys for Stance_Sword
-        bool upPressed = Input.GetKey(KeyCode.UpArrow);
-        bool downPressed = Input.GetKey(KeyCode.DownArrow);
-
-        // Only blend if exactly one key is pressed (horizontal axis behavior)
-        if (upPressed && !downPressed)
-        {
-            swordBlendValue = Mathf.MoveTowards(swordBlendValue, 1f, blendSpeed * Time.deltaTime);
-        }
-        else if (downPressed && !upPressed)
-        {
-            swordBlendValue = Mathf.MoveTowards(swordBlendValue, 0f, blendSpeed * Time.deltaTime);
-        }
-        // If both keys are pressed or neither is pressed, swordBlendValue remains unchanged
+        // Continuously blend towards the target values
+        shieldBlendValue = Mathf.MoveTowards(shieldBlendValue, shieldTarget, blendSpeed * Time.deltaTime);
+        swordBlendValue = Mathf.MoveTowards(swordBlendValue, swordTarget, blendSpeed * Time.deltaTime);
 
         animator.SetFloat("Stance_Shield", shieldBlendValue);
         animator.SetFloat("Stance_Sword", swordBlendValue);
