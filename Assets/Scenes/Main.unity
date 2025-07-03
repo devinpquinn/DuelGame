@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 864320441}
-  blendSpeed: 6
+  blendSpeed: 8
 --- !u!95 &864320441
 Animator:
   serializedVersion: 5
@@ -934,7 +934,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864320438}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 655531b09f59973448070b10bcbbe01b, type: 3}
+  m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e2c3a292ff286d24c873e39ce50a5c62, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0

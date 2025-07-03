@@ -5,9 +5,9 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public float blendSpeed = 2f; // How fast to blend
     private float shieldBlendValue = 0f;
-    private float swordBlendValue = 0f;
     private float shieldTarget = 0f;
-    private float swordTarget = 0f;
+    private float shieldBlockBlendValue = 0f;
+    private float shieldBlockTarget = 0f;
 
     void Update()
     {
@@ -20,22 +20,23 @@ public class PlayerController : MonoBehaviour
         {
             shieldTarget = 0f;
         }
-
-        // Handle up/down arrow keys for Stance_Sword (toggle behavior)
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        
+        if(Input.GetMouseButton(1))
         {
-            swordTarget = 1f;
+            // If held, set the block target
+            shieldBlockTarget = 1f;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else
         {
-            swordTarget = 0f;
+            // If released, reset the block target
+            shieldBlockTarget = 0f;
         }
 
         // Continuously blend towards the target values
         shieldBlendValue = Mathf.MoveTowards(shieldBlendValue, shieldTarget, blendSpeed * Time.deltaTime);
-        swordBlendValue = Mathf.MoveTowards(swordBlendValue, swordTarget, blendSpeed * Time.deltaTime);
+        shieldBlockBlendValue = Mathf.MoveTowards(shieldBlockBlendValue, shieldBlockTarget, blendSpeed * Time.deltaTime);
 
-        animator.SetFloat("Stance_Shield", shieldBlendValue);
-        animator.SetFloat("Stance_Sword", swordBlendValue);
+        animator.SetFloat("Shield_Up", shieldBlendValue);
+        animator.SetFloat("Shield_Block", shieldBlockBlendValue);
     }
 }
