@@ -686,8 +686,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 185394281}
-  - {fileID: 1089204194}
   - {fileID: 1807508459}
+  - {fileID: 1089204194}
   m_Father: {fileID: 864320439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &435294033
@@ -1235,7 +1235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089204194}
   m_Layer: 0
-  m_Name: SpearHolder
+  m_Name: SwordHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,7 +1267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1231690229}
   m_Layer: 0
-  m_Name: SpearHand
+  m_Name: SwordHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 1561417089}
   - component: {fileID: 1561417088}
   m_Layer: 0
-  m_Name: Spear
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
