@@ -4,25 +4,42 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public float blendSpeed = 2f; // How fast to blend
-    private float blendValue = 0f;
+    private float shieldBlendValue = 0f;
+    private float swordBlendValue = 0f;
 
     void Update()
     {
+        // Handle W/S keys for Stance_Shield
         bool wPressed = Input.GetKey(KeyCode.W);
         bool sPressed = Input.GetKey(KeyCode.S);
 
         // Only blend if exactly one key is pressed (horizontal axis behavior)
         if (wPressed && !sPressed)
         {
-            blendValue = Mathf.MoveTowards(blendValue, 1f, blendSpeed * Time.deltaTime);
+            shieldBlendValue = Mathf.MoveTowards(shieldBlendValue, 1f, blendSpeed * Time.deltaTime);
         }
         else if (sPressed && !wPressed)
         {
-            blendValue = Mathf.MoveTowards(blendValue, 0f, blendSpeed * Time.deltaTime);
+            shieldBlendValue = Mathf.MoveTowards(shieldBlendValue, 0f, blendSpeed * Time.deltaTime);
         }
-        // If both keys are pressed or neither is pressed, blendValue remains unchanged
+        // If both keys are pressed or neither is pressed, shieldBlendValue remains unchanged
 
-        animator.SetFloat("Stance_Shield", blendValue);
-        animator.SetFloat("Stance_Sword", blendValue);
+        // Handle up/down arrow keys for Stance_Sword
+        bool upPressed = Input.GetKey(KeyCode.UpArrow);
+        bool downPressed = Input.GetKey(KeyCode.DownArrow);
+
+        // Only blend if exactly one key is pressed (horizontal axis behavior)
+        if (upPressed && !downPressed)
+        {
+            swordBlendValue = Mathf.MoveTowards(swordBlendValue, 1f, blendSpeed * Time.deltaTime);
+        }
+        else if (downPressed && !upPressed)
+        {
+            swordBlendValue = Mathf.MoveTowards(swordBlendValue, 0f, blendSpeed * Time.deltaTime);
+        }
+        // If both keys are pressed or neither is pressed, swordBlendValue remains unchanged
+
+        animator.SetFloat("Stance_Shield", shieldBlendValue);
+        animator.SetFloat("Stance_Sword", swordBlendValue);
     }
 }
