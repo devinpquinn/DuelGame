@@ -133,17 +133,17 @@ PrefabInstance:
     - target: {fileID: 6971149952499889375, guid: abc4874674c289c45aa26beaa093447a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6971149952499889375, guid: abc4874674c289c45aa26beaa093447a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0.0515
       objectReference: {fileID: 0}
     - target: {fileID: 6971149952499889375, guid: abc4874674c289c45aa26beaa093447a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.015
+      value: 0.0065
       objectReference: {fileID: 0}
     - target: {fileID: 6971149952499889375, guid: abc4874674c289c45aa26beaa093447a,
         type: 3}
@@ -184,6 +184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShieldBasic
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139503362310885296, guid: abc4874674c289c45aa26beaa093447a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
