@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class FighterController : MonoBehaviour
 {
-    [Header("Mouse Sensitivity")]
-    [SerializeField] private float mouseSensitivity = 2f;
-    
     [Header("Smoothing")]
     [SerializeField] private float smoothingSpeed = 5f;
     
@@ -25,9 +22,6 @@ public class FighterController : MonoBehaviour
     // Current smoothed values
     private float currentSwordUp = 0f;
     private float currentSwordForward = 0f;
-    
-    // Screen center reference
-    private Vector2 screenCenter;
     
     void Start()
     {
@@ -51,28 +45,20 @@ public class FighterController : MonoBehaviour
             Debug.LogError("FighterController: No camera found!");
             return;
         }
-        
-        // Calculate screen center
-        screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
     }
 
     void Update()
     {
         if (animator == null || playerCamera == null) return;
         
-        // Get mouse position and calculate relative position from screen center
+        // Get mouse position
         Vector2 mousePosition = Input.mousePosition;
-        Vector2 mouseOffset = mousePosition - screenCenter;
         
-        // Normalize mouse offset to screen dimensions
-        Vector2 normalizedOffset = new Vector2(
-            mouseOffset.x / (Screen.width * 0.5f),
-            mouseOffset.y / (Screen.height * 0.5f)
-        );
+        // Calculate SwordUp based on vertical mouse position (0 at bottom, 1 at top)
+        targetSwordUp = Mathf.Clamp01(mousePosition.y / Screen.height);
         
-        // Apply sensitivity and clamp to parameter ranges
-        targetSwordForward = Mathf.Clamp(normalizedOffset.x * mouseSensitivity, -maxSwordForward, maxSwordForward);
-        targetSwordUp = Mathf.Clamp(normalizedOffset.y * mouseSensitivity, -maxSwordUp, maxSwordUp);
+        // Calculate SwordForward based on horizontal mouse position (0 at left, 1 at right)
+        targetSwordForward = Mathf.Clamp01(mousePosition.x / Screen.width);
         
         // Smooth interpolation towards target values
         currentSwordForward = Mathf.Lerp(currentSwordForward, targetSwordForward, smoothingSpeed * Time.deltaTime);
@@ -88,17 +74,8 @@ public class FighterController : MonoBehaviour
     /// </summary>
     public void ResetSwordPosition()
     {
-        targetSwordUp = 0f;
-        targetSwordForward = 0f;
-    }
-    
-    /// <summary>
-    /// Set custom sensitivity for mouse input
-    /// </summary>
-    /// <param name="sensitivity">New sensitivity value</param>
-    public void SetMouseSensitivity(float sensitivity)
-    {
-        mouseSensitivity = Mathf.Max(0.1f, sensitivity);
+        targetSwordUp = 0.5f; // Center of screen vertically
+        targetSwordForward = 0.5f; // Center of screen horizontally
     }
     
     /// <summary>

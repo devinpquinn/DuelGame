@@ -1077,8 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8db2bc408fbbf4295f9512b2b60cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 2
-  smoothingSpeed: 10
+  smoothingSpeed: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
