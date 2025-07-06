@@ -5,11 +5,8 @@ using UnityEngine;
 public class FighterController : MonoBehaviour
 {
     [Header("Smoothing")]
-    [SerializeField] private float smoothingSpeed = 5f;
-    
-    [Header("Parameter Ranges")]
-    private float maxSwordUp = 1f;
-    private float maxSwordForward = 1f;
+    [SerializeField] private float swordSmoothingSpeed = 50f;
+    [SerializeField] private float shieldSmoothingSpeed = 50f;
 
     // Private fields
     private Animator animator;
@@ -18,10 +15,12 @@ public class FighterController : MonoBehaviour
     // Target values for smooth interpolation
     private float targetSwordUp = 0f;
     private float targetSwordForward = 0f;
+    private float targetShieldUp = 0f;
     
     // Current smoothed values
     private float currentSwordUp = 0f;
     private float currentSwordForward = 0f;
+    private float currentShieldUp = 0f;
     
     void Start()
     {
@@ -60,13 +59,26 @@ public class FighterController : MonoBehaviour
         // Calculate SwordForward based on horizontal mouse position (0 at left, 1 at right)
         targetSwordForward = Mathf.Clamp01(mousePosition.x / Screen.width);
         
+        // Handle W and S keys for ShieldUp parameter (toggle control)
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            targetShieldUp = 1f;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            targetShieldUp = 0f;
+        }
+        // Shield maintains target position and smoothly transitions to it
+        
         // Smooth interpolation towards target values
-        currentSwordForward = Mathf.Lerp(currentSwordForward, targetSwordForward, smoothingSpeed * Time.deltaTime);
-        currentSwordUp = Mathf.Lerp(currentSwordUp, targetSwordUp, smoothingSpeed * Time.deltaTime);
+        currentSwordForward = Mathf.Lerp(currentSwordForward, targetSwordForward, swordSmoothingSpeed * Time.deltaTime);
+        currentSwordUp = Mathf.Lerp(currentSwordUp, targetSwordUp, swordSmoothingSpeed * Time.deltaTime);
+        currentShieldUp = Mathf.Lerp(currentShieldUp, targetShieldUp, shieldSmoothingSpeed * Time.deltaTime);
         
         // Set the animator parameters
         animator.SetFloat("SwordForward", currentSwordForward);
         animator.SetFloat("SwordUp", currentSwordUp);
+        animator.SetFloat("ShieldUp", currentShieldUp);
     }
     
     /// <summary>
@@ -76,6 +88,7 @@ public class FighterController : MonoBehaviour
     {
         targetSwordUp = 0.5f; // Center of screen vertically
         targetSwordForward = 0.5f; // Center of screen horizontally
+        targetShieldUp = 0.5f; // Neutral shield position
     }
     
     /// <summary>
@@ -84,7 +97,16 @@ public class FighterController : MonoBehaviour
     /// <param name="speed">New smoothing speed</param>
     public void SetSmoothingSpeed(float speed)
     {
-        smoothingSpeed = Mathf.Max(0.1f, speed);
+        swordSmoothingSpeed = Mathf.Max(0.1f, speed);
+    }
+    
+    /// <summary>
+    /// Set custom smoothing speed for shield transitions
+    /// </summary>
+    /// <param name="speed">New shield smoothing speed</param>
+    public void SetShieldSmoothingSpeed(float speed)
+    {
+        shieldSmoothingSpeed = Mathf.Max(0.1f, speed);
     }
     
     /// <summary>
@@ -94,5 +116,14 @@ public class FighterController : MonoBehaviour
     public Vector2 GetCurrentSwordValues()
     {
         return new Vector2(currentSwordForward, currentSwordUp);
+    }
+    
+    /// <summary>
+    /// Get current shield parameter value for debugging
+    /// </summary>
+    /// <returns>Current ShieldUp value</returns>
+    public float GetCurrentShieldValue()
+    {
+        return currentShieldUp;
     }
 }

@@ -893,7 +893,7 @@ PrefabInstance:
     - target: {fileID: 5856076907724214994, guid: 99b03b5addfa18045b6db0059d26187e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9661266
+      value: 0.8668011
       objectReference: {fileID: 0}
     - target: {fileID: 5856076907724214994, guid: 99b03b5addfa18045b6db0059d26187e,
         type: 3}
@@ -903,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 5856076907724214994, guid: 99b03b5addfa18045b6db0059d26187e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.2580687
+      value: 0.49865413
       objectReference: {fileID: 0}
     - target: {fileID: 5856076907724214994, guid: 99b03b5addfa18045b6db0059d26187e,
         type: 3}
@@ -918,7 +918,7 @@ PrefabInstance:
     - target: {fileID: 5856076907724214994, guid: 99b03b5addfa18045b6db0059d26187e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 29.911
+      value: 59.822
       objectReference: {fileID: 0}
     - target: {fileID: 5856076907724214994, guid: 99b03b5addfa18045b6db0059d26187e,
         type: 3}
@@ -1201,7 +1201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8db2bc408fbbf4295f9512b2b60cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothingSpeed: 50
+  swordSmoothingSpeed: 100
+  shieldSmoothingSpeed: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
