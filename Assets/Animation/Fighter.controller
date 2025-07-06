@@ -18,19 +18,35 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 0bec1a002f0612e4fb1703f244cd3652, type: 2}
-    m_Threshold: 1
-    m_Position: {x: 0, y: 0}
+    m_Threshold: 0.33333334
+    m_Position: {x: 0, y: 1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: SwordUp
     m_Mirror: 0
-  m_BlendParameter: SwordForward
-  m_BlendParameterY: SwordUp
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: db761d54ee119da4d83c678f10ccd583, type: 2}
+    m_Threshold: 0.6666667
+    m_Position: {x: 1, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: SwordUp
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: 7400000, guid: cc3fec922419e774babab2cd593314c5, type: 2}
+    m_Threshold: 1
+    m_Position: {x: 1, y: 1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: SwordUp
+    m_Mirror: 0
+  m_BlendParameter: ShieldUp
+  m_BlendParameterY: SwordForward
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
-  m_BlendType: 0
+  m_BlendType: 3
 --- !u!1102 &-6834789221845311124
 AnimatorState:
   serializedVersion: 6
@@ -212,6 +228,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: SwordForward
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: ShieldUp
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
